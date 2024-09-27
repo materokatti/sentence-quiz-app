@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/food_input_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Text('Food Input'),
+    FoodInputScreen(),
     Text('Nutrition Analysis'),
     Text('Health Advice'),
   ];
