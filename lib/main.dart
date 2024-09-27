@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'screens/food_input_screen.dart';
+import 'screens/sentence_input_screen.dart';
+import 'screens/quiz_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Food Nutrition App',
+      title: 'Language Quiz App',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: const HomePage(),
@@ -32,9 +33,8 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    FoodInputScreen(),
-    Text('Nutrition Analysis'),
-    Text('Health Advice'),
+    SentenceInputScreen(),
+    QuizScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Food Nutrition App'),
+        title: const Text('Language Quiz App'),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -55,20 +55,16 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.fastfood),
-            label: 'Food Input',
+            icon: Icon(Icons.create),
+            label: 'Add Sentence',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart),
-            label: 'Analysis',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.health_and_safety),
-            label: 'Advice',
+            icon: Icon(Icons.quiz),
+            label: 'Take Quiz',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.blue,
         onTap: _onItemTapped,
       ),
     );
