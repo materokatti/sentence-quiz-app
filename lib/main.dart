@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'screens/sentence_input_screen.dart';
-import 'screens/quiz_screen.dart';
+import 'screens/quiz_start_screen.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -32,9 +32,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    SentenceInputScreen(),
-    QuizScreen(),
+  // Changed from const to final
+  final List<Widget> _widgetOptions = <Widget>[
+    const SentenceInputScreen(),
+    const QuizStartScreen(),
   ];
 
   void _onItemTapped(int index) {

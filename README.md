@@ -1,1 +1,1 @@
-# food_nutrition_advice_app
+# sentence_quiz_app

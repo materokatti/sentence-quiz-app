@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/sentence.dart';
+import '../helpers/database_helper.dart';
 
 class SentenceInputScreen extends StatefulWidget {
   const SentenceInputScreen({Key? key}) : super(key: key);
@@ -13,13 +14,16 @@ class _SentenceInputScreenState extends State<SentenceInputScreen> {
   final _nativeController = TextEditingController();
   final _answerController = TextEditingController();
 
-  void _submitForm() {
+  void _submitForm() async {
     if (_formKey.currentState!.validate()) {
       final sentence = Sentence(
+        id: null, // Set id to null for new sentences
         nativeSentence: _nativeController.text,
         answer: _answerController.text,
       );
-      // TODO: Save the sentence to a database or state management solution
+
+      await DatabaseHelper.instance.insertSentence(sentence);
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Sentence added successfully!')),
       );
